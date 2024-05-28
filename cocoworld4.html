@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김코코의 세상</title>
+    <style>
+        /* [웹 페이지 배경] */
+        body {
+            margin: 0;
+            background: linear-gradient(to bottom right, #f0f0f0, #a0a0a0);
+            background-size: cover;
+            background-image: url('Background.png'); /* 배경 이미지 경로 입력 */
+            display: flex;
+            font-family: "배달의민족 도현", serif; /* 폰트 설정 추가 */
+        }
+
+        /* [가운데 상단 텍스트] */
+        .center-top-text {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: blue;
+            color: white;
+            font-size: 15pt;
+            font-weight: bold;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* [우측 상단 텍스트] */
+        .top-right-text {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: red;
+            color: white;
+            font-size: 10pt;
+            padding: 5px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .top-right-text a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* [좌측 상단 날짜와 시간 텍스트] */
+        .top-left-text {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: black;
+            color: white;
+            font-size: 10pt;
+            padding: 5px;
+            text-align: center;
+        }
+
+        /* [메뉴 카테고리] */
+        .menu-category {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .menu-category a {
+            color: pink;
+            font-size: 13pt;
+            font-weight: bold;
+            text-decoration: underline;
+            transform: rotate(-45deg);
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        /* [중앙 이미지 그리드] */
+        .content {
+            margin-left: 150px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 100px);
+            grid-gap: 10px;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .image-grid .image-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border: 1.5pt solid blue;
+            overflow: hidden;
+            transition: transform 0.5s;
+        }
+
+        .image-grid .image-container img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-grid .image-container:hover {
+            animation: rotate 2s linear infinite;
+        }
+
+        .image-grid .image-container .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .image-grid .image-container:hover .overlay {
+            opacity: 1;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .video-container {
+            display: none;
+            text-align: center;
+        }
+
+        .video-container iframe {
+            width: 1280px;
+            height: 720px;
+        }
+    </style>
+    <script>
+        function showImages() {
+            document.querySelector('.image-grid').style.display = 'grid';
+            document.querySelector('.video-container').style.display = 'none';
+        }
+
+        function showVideo() {
+            document.querySelector('.image-grid').style.display = 'none';
+            document.querySelector('.video-container').style.display = 'block';
+        }
+
+        function updateDateTime() {
+            const now = new Date();
+            const dateTimeString = now.toLocaleString();
+            document.getElementById('datetime').textContent = dateTimeString;
+        }
+
+        setInterval(updateDateTime, 1000); // 1초마다 업데이트
+        window.onload = updateDateTime; // 페이지 로드 시 즉시 실행
+    </script>
+</head>
+<body>
+    <!-- [가운데 상단 텍스트] -->
+    <div class="center-top-text">
+        김코코의 세상
+    </div>
+
+    <!-- [우측 상단 텍스트] -->
+    <div class="top-right-text">
+        <a href="https://www.instagram.com/kwang_9904/" target="_blank">주인 : 김광현</a>
+    </div>
+
+    <!-- [좌측 상단 날짜와 시간 텍스트] -->
+    <div class="top-left-text" id="datetime"></div>
+
+    <!-- [메뉴 카테고리] -->
+    <div class="menu-category">
+        <a href="javascript:void(0)" onclick="showImages()">코코 사진들</a>
+        <a href="javascript:void(0)" onclick="showVideo()">코코가 좋아하는 영상</a>
+    </div>
+
+    <!-- [중앙 이미지 그리드] -->
+    <div class="content">
+        <div class="image-grid">
+            <div class="image-container">
+                <a href="http://example.com/page1" target="_blank">
+                    <img src="코코 이미지/coco1.jpg" alt="Image 1">
+                    <div class="overlay">1</div>
+                </a>
+            </div>
+            <div class="image-container">
+                <a href="http://example.com/page2" target="_blank">
+                    <img src="코코 이미지/coco2.jpg" alt="Image 2">
+                    <div class="overlay">2</div>
+                </a>
+            </div>
+            <div class="image-container">
+                <a href="http://example.com/page3" target="_blank">
+                    <img src="코코 이미지/coco3.jpg" alt="Image 3">
+                    <div class="overlay">3</div>
+                </a>
+            </div>
+            <div class="image-container">
+                <a href="http://example.com/page4" target="_blank">
+                    <img src="코코 이미지/coco4.jpg" alt="Image 4">
+                    <div class="overlay">4</div>
+                </a>
+            </div>
+            <div class="image-container">
+                <a href="http://example.com/page5" target="_blank">
+                    <img src="코코 이미지/coco5.jpg" alt="Image 5">
+                    <div class="overlay">5</div>
+                </a>
+            </div>
+            <div class="image-container">
+                <a href="http://example.com/page6" target="_blank">
+                    <img src="코코 이미지/coco6.jpg" alt="Image 6">
+                    <div class="overlay">6</div>
+                </a>
+            </div>
+            <div class="image-container">
+                <a href="http://example.com/page7" target="_blank">
+                    <img src="코코 이미지/coco7.jpg" alt="Image 7">
+                    <div class="overlay">7</div>
+                </a>
+            </div>
+            <div class="image-container">
+                <a href="http://example.com/page8" target="_blank">
+                    <img src="코코 이미지/coco8.jpg" alt="Image 8">
+                    <div class="overlay">8</div>
+                </a>
+            </div>
+            <
