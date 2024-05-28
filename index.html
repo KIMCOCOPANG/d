@@ -3,168 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>테스트3</title>
+    <title>메인 초기 화면</title>
     <style>
-        /* 전체 페이지 스타일 */
         body {
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            height: 500vh;
+            align-items: center;
+            height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
-            background-image: url('https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxNzEwMDhfNzYg%2FMDAxNTA3NDcwMTc5ODIy.gRd0PDRmQjK0bPGeT-QtpEVyvsWEHL1-sjJKWfdmO8wg.uQUnJDBUwJYW5vUsm8nSsOBjHGk3ZBxcdJxtuhuDwgIg.JPEG.1004nnnnnn%2F%25BE%25C6%25C0%25CC%25C6%25F9%25B9%25E8%25B0%25E6%25C8%25AD%25B8%25E9_%25B4%25C0%25B3%25A6%25C0%25D6%25B4%25C2%25C0%25CC%25B9%25CC%25C1%25F611.jpg&type=sc960_832');
-            background-size: auto;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-position: top center;
-            filter: grayscale(100%);
         }
 
-        /* YouTube 동영상 스타일 */
-        .youtube-container {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-        }
-
-        iframe.youtube {
-            width: 400px;
-            height: 300px;
-        }
-
-        /* 스프레드시트 스타일 */
-        .spreadsheet-container {
-            position: absolute;
-            top: 700px;
-            right: 400px;
-            width: 1000px;
-            height: 1000px;
-        }
-
-        iframe.spreadsheet {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        /* 이미지 스타일 */
-        .image-container {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 300px;
-            height: 300px;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            transition: transform 1s ease-in-out;
-        }
-
-        .following-image {
-            position: fixed;
-            width: 50px;
-            height: 50px;
-            pointer-events: none; /* 이미지가 마우스 이벤트를 가로채지 않도록 설정 */
-        }
-
-        /* 스크롤 버튼 스타일 */
-        .scroll-button {
-            position: absolute;
-            top: 20px;
-            width: 100px;
-            height: 50px;
-            background-color: blue;
-            color: white;
-            border: none;
-            border-radius: 5px;
+        .link-box {
+            font-size: 24px;
+            padding: 20px;
+            border: 1px solid #000;
             cursor: pointer;
+            text-align: center;
+            background-color: white;
         }
 
-        /* 파란색 네모 상자 스타일 */
-        .blue-box {
-            position: absolute;
-            top: 1500px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 100px;
-            background-color: blue;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
+        .link-box:hover {
+            background-color: #ddd;
         }
     </style>
 </head>
 <body>
-
-<!-- YouTube 동영상 임베드 -->
-<div class="youtube-container">
-    <iframe class="youtube" src="https://www.youtube.com/embed/iV0zsC8MaEo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-
-<!-- 스프레드시트 임베드 -->
-<div class="spreadsheet-container">
-    <iframe class="spreadsheet" src="https://docs.google.com/spreadsheets/d/1U89w8yd8MImh-X3rDlVzsL0T7sr4ITE9D-ouNfITroI/edit#gid=1461925630"></iframe>
-</div>
-
-<!-- 이미지 추가 -->
-<div class="image-container" onmouseover="rotateImage()">
-    <a href="https://search.naver.com/search.naver?sm=tab_hty.top&where=image&ssc=tab.image.all&query=%EC%95%84%EC%9D%B4%EC%9C%A0&oquery=%EB%84%A4%EC%9D%B4%EB%B2%84+iframe&tqi=iDTgEdqVOZossB2CvAKsssssty0-448743" target="_blank">
-        <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAzMDdfMTI5%2FMDAxNjc4MTg4OTU2NzY2.lNV7t5E1Xs6sUf4ERY9TpL_NtwHe9OXu-kgKzI9_iD0g.cuQtSStiSyDGBESSAm8SSs00pa5De54o-Snc7A_9N00g.JPEG.scroll1013%2F47a71c15e1377efb680cfc83c6ccd5d6.jpg&type=sc960_832" alt="네이버 이미지">
-    </a>
-</div>
-
-<!-- 마우스를 따라서 움직이는 이미지 추가 -->
-<img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzAzMDdfMTI5%2FMDAxNjc4MTg4OTU2NzY2.lNV7t5E1Xs6sUf4ERY9TpL_NtwHe9OXu-kgKzI9_iD0g.cuQtSStiSyDGBESSAm8SSs00pa5De54o-Snc7A_9N00g.JPEG.scroll1013%2F47a71c15e1377efb680cfc83c6ccd5d6.jpg&type=sc960_832" class="following-image">
-
-<!-- 스크롤 버튼 -->
-<button class="scroll-button" onclick="scrollToBottom()">아래로</button>
-
-<!-- 파란색 네모 상자 -->
-<div class="blue-box" onclick="openInstagram()">
-    안녕하세요, nanjubie입니다.
-</div>
-
-<script>
-    // 이미지가 마우스를 따라서 움직이도록 설정
-    document.addEventListener("mousemove", function(event) {
-        var followingImage = document.querySelector(".following-image");
-        followingImage.style.left = (event.clientX - 25) + "px"; // 이미지의 중심을 마우스 위치에 맞추기 위해 25px을 뺍니다.
-        followingImage.style.top = (event.clientY - 25) + "px"; // 이미지의 중심을 마우스 위치에 맞추기 위해 25px을 뺍니다.
-    });
-
-    // 마우스 이벤트에 따라 이미지를 한 바퀴 돌게 하는 함수
-    function rotateImage() {
-        var image = document.querySelector(".image-container img");
-        image.style.transition = "transform 1s ease-in-out";
-        image.style.transform = "rotate(360deg)";
-    }
-
-    // 페이지의 맨 아래로 부드럽게 스크롤되는 함수
-    function scrollToBottom() {
-        window.scroll({
-            top: document.body.scrollHeight,
-            behavior: 'smooth'
-        });
-    }
-
-    // 페이지가 로드될 때 YouTube 동영상을 자동으로 재생하는 함수
-    window.onload = function() {
-        var youtubeIframe = document.querySelector(".youtube");
-        youtubeIframe.src += "?autoplay=1";
-    };
-
-    // Instagram 페이지를 새 탭에서 여는 함수
-    function openInstagram() {
-        window.open("https://www.instagram.com/nanjubie/", "_blank");
-    }
-</script>
-
+    <div class="link-box" onclick="location.href='subpage1.html'">재미있는 사이트로 이동해보기</div>
 </body>
 </html>
