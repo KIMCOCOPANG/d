@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV 파일 표시</title>
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <thead>
+        <tr>
+            <th>컬럼1</th>
+            <th>컬럼2</th>
+            <th>컬럼3</th>
+            <!-- 필요한 만큼 컬럼 추가 -->
+        </tr>
+    </thead>
+    <tbody>
+        <!-- CSV 파일 내용이 여기에 표시될 것입니다. -->
+    </tbody>
+</table>
+
+<script>
+    // CSV 파일의 URL
+    const csvUrl = "https://github.com/KIMCOCOPANG/d/blob/305b4ca6d267bd33db29f9babcd9cee56a860c02/%EC%98%A4%EB%B3%B4%EC%9D%98%EB%B0%9C%EC%83%9D%EC%9B%90%EC%9D%B8_%ED%95%9C%EA%B5%AD%EC%96%B8%EB%A1%A0%EC%A7%84%ED%9D%A5%EC%9E%AC%EB%8B%A8%20-%20%EC%8B%9C%ED%8A%B81.csv";
+
+    // CSV 파일을 가져와서 테이블에 표시하는 함수
+    async function loadCsvToTable() {
+        const response = await fetch(csvUrl);
+        const data = await response.text();
+        const rows = data.split("\n");
+        const tableBody = document.querySelector("tbody");
+
+        // 각 행을 반복하면서 테이블에 추가
+        rows.forEach(row => {
+            const cells = row.split(",");
+            const tr = document.createElement("tr");
+            cells.forEach(cell => {
+                const td = document.createElement("td");
+                td.textContent = cell;
+                tr.appendChild(td);
+            });
+            tableBody.appendChild(tr);
+        });
+    }
+
+    // 페이지가 로드될 때 CSV 파일을 테이블로 표시
+    window.onload = function() {
+        loadCsvToTable();
+    };
+</script>
+
+</body>
+</html>
